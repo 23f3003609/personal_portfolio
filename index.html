@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/7ff07387ac.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+            <nav>
+                <img src="images/my2.png" class="logo" alt="logo-image">
+                <ul id="sidemenu">
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#portfolio">Projects</a></li>
+                    <li><a href="#services">Certifications</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <i class="fas fa-times" onclick="closemenu()"></i>
+                </ul>
+                <i class="fas fa-bars" onclick="openmenu()"></i>
+            </nav>
+            <div class="header-text">
+                <!-- <p>UI Designer</p> -->
+                <h1>Hi, I'm <span>Sameer Shaik</span><br> from India</h1>
+            </div>
+            <!-- <div class="about-col2">
+                    <img src="images/u2.jpeg" alt="user-image">
+                </div> -->
+        </div>
+    </div>
+    <!-- -------------about-------------->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col1">
+                    <img src="images/back.jpeg" alt="user-image">
+                </div>
+                <div class="about-col2">
+                    <h1 class="sub-title">About Me</h1>
+                    <p>
+Enthusiastic <b>Computer Science</b> undergraduate at <b>RGUKT Ongole</b> with a strong foundation in software development, data science, and problem-solving. Eager to contribute technical expertise, creativity, and innovative,
+impactful solutions to real-world projects while continuously learning and growing in the field of technology.</p>
+                    <div class="tab-titles">
+                    <p class="tablinks active-link" onclick="opentab('skills')">Skills</p>
+                    <p class="tablinks" onclick="opentab('education')">Education</p>
+                    <p class="tablinks" onclick="opentab('experience')">Experience</p>
+                </div>
+                <div class="tabcontent active-tab" id="skills">
+                    <ul>
+                        <li><span>Programming Languages</span><br>Python, SQL, HTML, CSS</li>
+                        <li><span>Frameworks and Libraries:</span><br>Linux/Unix Commands, Flask, Numpy, Pandas, Scikit-Learn</li>
+                        <li><span>Core Competencies</span><br>Data Structures & Algorithms (DSA), Machine Learning, DBMS, Data Science</li>
+                    </ul>
+                </div>
+                <div class="tabcontent" id="education">
+                    <ul>
+                        <li><span>IIT Madras</span><br>BS in Data Science and Applications</li>
+                        <li><span>Rajiv Gandhi University of Knowledge Technologies, Ongole</span><br>BTech in Computer Science and Engineering</li>
+                        <li><span>Rajiv Gandhi University of Knowledge Technologies, Ongole</span><br>Pre University Course</li>
+                    </ul>
+                </div>
+                <div class="tabcontent" id="experience">
+                    <ul>
+                        <li><span>Infosys</span><br>Artificial Intelligence Intern</li>
+                        <!-- <li><span>Infosys</span><br>Designing web interfaces</li>
+                        <li><span>Data Science</span><br>Designing web interfaces</li> -->
+                    </ul>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- ---------------portfolio---------------- -->
+    <div id="portfolio">
+        <div class="container">
+            <div class="sub-title">My Projects</div>
+            <div class="work-list">
+                <div class="work">
+                    <img src="images/parking_car_image.jpeg" alt="work1">
+                    <div class="layer">
+                        <h3>Smartlot</h3>
+                        <p>A Parking Management System</p>
+                        <a href="https://parking-app-beige.vercel.app/" target="_blank"><i class="fa-solid fa-link"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="images/Analytics Illustration.jpeg" alt="work2">
+                    <div class="layer">
+                        <h3>Text Summarization using NLP</h3>
+                        <p>GitHub Repository</p>
+                        <a href="https://github.com/23f3003609/text_summarization_using_nlp"><i class="fa-solid fa-link"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="images/How Beneficial Is Educational Counseling_.jpeg" alt="work3">
+                    <div class="layer">
+                        <h3>Customer Churn Prediction</h3>
+                        <p>GitHub Repository</p>
+                        <a href="https://github.com/23f3003609"><i class="fa-solid fa-link"></i></a>
+                    </div>
+                </div>
+            </div>
+            <a href="https://github.com/23f3003609" target="_blank" class="btn">See more</a>
+        </div>
+    </div>
+<!-- ----------------Certificates -------------> 
+    <div id="services">
+        <div class="container">
+            <h1 class="sub-title">My Certifications</h1>
+            <div class="services-list">
+                <div>
+                    <i class="fa-solid fa-code"></i>
+                    <h2>Diploma in Programming</h2>
+                    <p style="font-size:15px;">Acquired hands-on experience in DSA, Java, Flask, Jinja, SQL, Vue.js, REST APIs, 
+                        and Linux system commands, with practical exposure through real-world projects and assignments.</p>
+                    <a href="#services" style="font-size:20px;"><i class="fa-solid fa-link fass"></i>IIT Madras</a>
+                    <!-- <a href="#"></a> -->
+                </div>
+                <div>
+                    <i class="fa-solid fa-brain"></i>
+                    <h2>Deep Learning</h2>
+                    <p style="font-size:15px;">Learned and worked with techniques such as Convolutional Neural Networks (CNNs), Recurrent Neural Networks (RNNs), and Long Short-Term Memory (LSTMs),
+                         applying them to practical learning tasks and projects.</p>
+                    <a href="https://drive.google.com/file/d/1rI1fcI8LwkWbcG-5Z9HzfC2jsqi0FhMY/view?usp=drive_link" target="_blank" style="font-size:20px;"><i class="fa-solid fa-link fass"></i>IIT Ropar</a>
+                </div>
+                <div>
+                    <i class="fa-solid fa-laptop-code"></i>
+                    <h2>Full Stack Web Development</h2>
+                    <p style="font-size:15px;">Hands-on experience in building end-to-end web applications. Learned to develop responsive frontends and robust backends,
+                         integrate databases, and implement real-world features using modern web technologies.</p>
+                    <a href="https://drive.google.com/file/d/1GcDI7zsJPTJJTR0m3IRGjO1Qe4hCR30w/view?usp=drive_link" style="font-size:20px;"><i class="fa-solid fa-link fass"></i>Udemy</a>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- ----------contact-------- -->
+    <div id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contact-left">
+                    <h1 class="sub-title">Contact Me</h1>
+                    <p><i class="fa-solid fa-at"></i> sameer8367s@gmail.com</p>
+                    <p><i class="fa-solid fa-at"></i> 23f3003609@ds.study.iitm.ac.in</p>
+                    <p><i class="fas fa-phone"></i>+91 8367286943</p>
+                    <div class="social-icons">
+                        <a href="https://linkedin.com/in/shaik-sameer18" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/23f3003609" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.instagram.com/sameerr._.18" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <a href="images/Sameer_Shaik_Resume.pdf" download class="btn btn2">Download CV</a>
+                </div>
+                <div class="contact-right">
+                    <form name="submit-to-google-sheet">
+                        <input type="text" name="Name" placeholder="your name" required>
+                        <input type="email" name="Email" placeholder="your email" required>
+                        <textarea name="Message" rows="6" placeholder="your message" required></textarea>
+                        <button type="submit" class="btn btn2">Submit</button>
+                    </form>
+                    <span id="msg"></span>
+                </div>
+            </div>
+            <!-- <h1 class="sub-title">Contact Me</h1> -->
+        </div>
+        <div class="copyright">
+            <p>Copyright © Sameer 2025. All rights reserved.</p>
+        </div>
+    </div>
+
+
+    <script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzG4lkYtEbye_MmeXbe58iC5z7kc7X8kOSTYs36K1loGSA_6vAoqxugR_7bYXskKCFVGg/exec'
+  const form = document.forms['submit-to-google-sheet']
+  const msg = document.getElementById("msg");
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => {
+        msg.innerHTML="Message sent Successfully"
+        setTimeout(function(){
+            msg.innerHTML = "";
+        }, 5000);
+        form.reset()
+      })
+      .catch(error => console.error('Error!', error.message))
+  })
+    </script>
+
+    <script>
+        var tablinks = document.getElementsByClassName("tablinks");
+        var tabcontent = document.getElementsByClassName("tabcontent");
+        function opentab(tabname){
+            for(tablink of tablinks){
+                tablink.classList.remove("active-link");
+            }
+            for(tabcont of tabcontent){
+                tabcont.classList.remove("active-tab");
+            }
+            event.currentTarget.classList.add("active-link");
+            document.getElementById(tabname).classList.add("active-tab");
+        }
+    </script>
+    <script>
+        var sidemenu = document.getElementById("sidemenu");
+        function openmenu(){
+            sidemenu.style.right = "0";
+        }
+        function closemenu(){
+            sidemenu.style.right = "-200px";
+        }
+    </script>
+</body>
+</html>
