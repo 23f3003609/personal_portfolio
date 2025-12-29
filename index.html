@@ -6,8 +6,16 @@
     <title>Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/7ff07387ac.js" crossorigin="anonymous"></script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 <body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress"></div>
+
     <div id="header">
         <div class="container">
             <nav>
@@ -24,7 +32,7 @@
             </nav>
             <div class="header-text">
                 <!-- <p>UI Designer</p> -->
-                <h1>Hi, I'm <span>Sameer Shaik</span><br> from India</h1>
+                <h1>Hi, I'm <span id="typewriter-name" class="typewriter">Sameer Shaik</span><br> from India</h1>
             </div>
             <!-- <div class="about-col2">
                     <img src="images/u2.jpeg" alt="user-image">
@@ -211,6 +219,164 @@ impactful solutions to real-world projects while continuously learning and growi
         function closemenu(){
             sidemenu.style.right = "-200px";
         }
+    </script>
+
+    <!-- Smooth section transitions + typewriter -->
+    <script>
+      (function () {
+        // Section fade-in/out
+        const ids = ['header', 'about', 'portfolio', 'services', 'contact'];
+        const sections = ids.map(id => document.getElementById(id)).filter(Boolean);
+        sections.forEach(sec => sec.classList.add('section-transition'));
+
+        if ('IntersectionObserver' in window) {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              entry.target.classList.toggle('section-visible', entry.isIntersecting);
+            });
+          }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+          sections.forEach(sec => observer.observe(sec));
+        } else {
+          sections.forEach(sec => sec.classList.add('section-visible'));
+        }
+
+        // Typewriter effect for name
+        const nameEl = document.querySelector('.header-text h1 span');
+        if (!nameEl) return;
+        const full = (nameEl.textContent || 'Sameer Shaik').trim();
+        let typing = false;
+
+        function typeOnce() {
+          if (typing) return;
+          typing = true;
+          nameEl.textContent = '';
+          let i = 0;
+          const speed = 85;
+          (function step() {
+            if (i <= full.length) {
+              nameEl.textContent = full.slice(0, i++);
+              setTimeout(step, speed);
+            } else {
+              typing = false;
+            }
+          })();
+        }
+
+        // Run on load
+        document.addEventListener('DOMContentLoaded', typeOnce);
+
+        // Retype when header is visible again
+        const header = document.getElementById('header');
+        if (header && 'IntersectionObserver' in window) {
+          const nameObs = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+              if (e.isIntersecting) typeOnce();
+            });
+          }, { threshold: 0.6 });
+          nameObs.observe(header);
+        }
+      })();
+    </script>
+    <!-- Enhanced section transitions with stagger -->
+    <script>
+      (function () {
+        const ids = ['header', 'about', 'portfolio', 'services', 'contact'];
+        const sections = ids.map(id => document.getElementById(id)).filter(Boolean);
+
+        // Initialize transition class
+        sections.forEach(sec => sec.classList.add('section-transition'));
+
+        // Helper: mark key children for stagger
+        function applyStagger(sec) {
+          const candidates = sec.querySelectorAll(
+            'h1, h2, p, ul, .tab-titles, .work-list, .services-list, form, .social-icons, .btn, .about-col1 img, .about-col2'
+          );
+          let delay = 0;
+          candidates.forEach((el, i) => {
+            el.classList.add('stagger-child');
+            // stagger 120ms per element, cap at ~1.2s
+            delay = Math.min(i * 120, 1200);
+            el.style.setProperty('--stagger-delay', delay + 'ms');
+          });
+        }
+
+        // Observer options tuned for smoother reveal
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            const sec = entry.target;
+            if (entry.isIntersecting) {
+              sec.classList.add('section-visible');
+              sec.classList.remove('section-leaving');
+              applyStagger(sec);
+            } else {
+              // add subtle leave state when scrolling away
+              if (sec.classList.contains('section-visible')) {
+                sec.classList.remove('section-visible');
+                sec.classList.add('section-leaving');
+              }
+            }
+          });
+        }, { threshold: 0.15, rootMargin: '0px 0px -5% 0px' });
+
+        sections.forEach(sec => observer.observe(sec));
+      })();
+    </script>
+
+    <!-- Scroll progress bar and edge glow script -->
+    <script>
+      (function() {
+        const progressBar = document.querySelector('.scroll-progress');
+        const body = document.body;
+        
+        function updateScrollIndicators() {
+          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          const scrollHeight = document.documentElement.scrollHeight;
+          const clientHeight = document.documentElement.clientHeight;
+          const scrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
+          
+          // Update progress bar
+          if (progressBar) {
+            progressBar.style.width = scrollPercentage + '%';
+          }
+          
+          // Change color when scrolled more than 200px
+          if (scrollTop > 200) {
+            body.classList.add('scrolled-deep');
+          } else {
+            body.classList.remove('scrolled-deep');
+          }
+          
+          // Check if at top (within 50px)
+          if (scrollTop <= 50) {
+            body.classList.add('at-top');
+            body.classList.remove('at-bottom');
+          } else {
+            body.classList.remove('at-top');
+          }
+          
+          // Check if at bottom (within 50px)
+          if (scrollTop + clientHeight >= scrollHeight - 50) {
+            body.classList.add('at-bottom');
+            body.classList.remove('at-top');
+          } else {
+            body.classList.remove('at-bottom');
+          }
+        }
+        
+        // Throttle scroll events for performance
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+          if (scrollTimeout) {
+            window.cancelAnimationFrame(scrollTimeout);
+          }
+          scrollTimeout = window.requestAnimationFrame(() => {
+            updateScrollIndicators();
+          });
+        });
+        
+        // Initial check
+        updateScrollIndicators();
+      })();
     </script>
 </body>
 </html>
